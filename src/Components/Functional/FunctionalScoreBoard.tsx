@@ -1,16 +1,16 @@
+import { guessCount, nextQuestion, ScoreType } from "../TypeAndGlobalFunctions";
 import "./styles/score-board.css";
 //  Where the score is presented
 
-const incorrectCount = 0;
-const correctCount = 0;
-const answersLeft = ["trout", "salmon", "tuna", "shark"];
-
-export function FunctionalScoreBoard() {
+export function FunctionalScoreBoard({
+  correctCount,
+  incorrectCount
+}: ScoreType) {
   return (
     <div id="score-board">
       <div>Incorrect 🔻: {incorrectCount}</div>
       <div id="choices-left">
-        {answersLeft.map((answer) => (
+        {nextQuestion(guessCount(correctCount, incorrectCount)).map((answer) => (
           <div key={answer} className="choice">
             {answer}
           </div>
